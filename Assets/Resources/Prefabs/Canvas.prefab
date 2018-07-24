@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114011362442733466}
   - component: {fileID: 114904801970568496}
   - component: {fileID: 114159181104251170}
+  - component: {fileID: 114151070072122946}
   m_Layer: 5
   m_Name: NotificationPanel
   m_TagString: Untagged
@@ -76,6 +77,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114151070072122946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1731937677413082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!114 &114159181104251170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,6 +155,9 @@ MonoBehaviour:
   notificationButtonPrefab: {fileID: 1670163865701496, guid: a28dd88221fc34b4b91094359adaa2e2,
     type: 2}
   notificationPanelTransform: {fileID: 224164827260316874}
+  errorColor: {r: 1, g: 0, b: 0, a: 1}
+  warningColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  logColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!114 &114904801970568496
 MonoBehaviour:
   m_ObjectHideFlags: 1
