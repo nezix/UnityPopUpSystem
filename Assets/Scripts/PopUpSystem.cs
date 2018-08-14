@@ -11,8 +11,13 @@ public class PopUpSystem : MonoBehaviour {
 
     public GameObject notificationButtonPrefab;
 
-    public Transform notificationPanelTransform; 
+    public Transform notificationPanelTransform;
 
+    [Tooltip("Adjust this value to delay the fade animation")]
+    public float timeBeforeAnimationStarts = 3.0f;
+
+    public Queue<GameObject> notificationQueue = new Queue<GameObject>();
+    private GameObject currentGo;
 
     public Color errorColor = Color.red;
     public Color warningColor = Color.yellow;
@@ -38,6 +43,7 @@ public class PopUpSystem : MonoBehaviour {
     void OnEnable ()
     {
         Application.RegisterLogCallback(HandleLog);
+        notificationQueue.Clear();
     }
 
     void OnDisable ()
@@ -81,22 +87,28 @@ public class PopUpSystem : MonoBehaviour {
                     logo.color = Color.black;
                     break;
             }
-
+            notificationQueue.Enqueue(notif);
         }
 
     }
 
     int cpt = 0;
     void Update(){
-        
+        //Play a delayed animation once the previous gameObject is destroyed
+        if(currentGo == null && notificationQueue.Count != 0){
+            currentGo = notificationQueue.Dequeue();
+            currentGo.GetComponent<SlideAnimationButton>().delayedAnimation(timeBeforeAnimationStarts);
+        }
+
+        //Debuging
         if(cpt == 0){
             Debug.LogWarning("My warning");
         }
-        if(cpt == 90){
+        if(cpt == 120){
             Debug.LogError("My error");
         }
 
-        if(cpt == 120){
+        if(cpt == 180){
             cpt = -1;
             Debug.Log("My Log");
         }
